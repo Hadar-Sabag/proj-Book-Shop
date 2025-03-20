@@ -5,7 +5,6 @@ var gFilterBy = ''
 const STORAGE_KEY = 'booksdb'
 
 _createBooks()
-console.log('gBooks: ', gBooks)
 
 function getBooks() {
     return gBooks
@@ -32,11 +31,12 @@ function updatePrice(bookId, price) {
 }
 
 function addBook(name, price) {
+    if (!name || !price) return
     var book = _createBook(name, price)
     gBooks.push(book)
 
     _saveBooks()
-
+    return book
 }
 
 function _createBooks() {
@@ -71,6 +71,18 @@ function setFilter(filterBy) {
 
 function getBooksForDisplay() {
     return gBooks.filter(book => book.title.toLowerCase().includes(gFilterBy))
+}
+
+function getExpensiveBooksCount() {
+    return gBooks.filter(book => book.price > 200).length
+}
+
+function getAverageBooksCount() {
+    return gBooks.filter(book => book.price > 80).length
+}
+
+function getCheapBooksCount() {
+    return gBooks.filter(book => book.price < 80).length
 }
 
 

@@ -31,6 +31,13 @@ function render() {
 
     document.querySelector('.book-list').innerHTML =
         strHTMLs.join('')
+    renderStat()
+}
+
+function renderStat() {
+    document.querySelector('.expensive-book-count').innerText = getExpensiveBooksCount()
+    document.querySelector('.average-book-count').innerText = getAverageBooksCount()
+    document.querySelector('.cheap-book-count').innerText = getCheapBooksCount()
 }
 
 function onRemoveBook(bookId) {
@@ -51,7 +58,11 @@ function onUpdateBook(bookId) {
 function onAddBook() {
     var submitName = prompt('Enter Book Name')
     var submitPrice = +prompt('Enter Price')
-    addBook(submitName, submitPrice)
+    var book = addBook(submitName, submitPrice)
+    if (!book) {
+        alert('Invalid input! Please enter a valid book title and price.')
+        return
+    }
     render()
     onOpenSuccessMessage('Book added successfully!')
 }

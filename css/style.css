@@ -1,94 +1,145 @@
-* {
-    box-sizing: border-box;
-}
+ * {
+     box-sizing: border-box;
+ }
 
-body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    margin: 0;
-}
+ body {
+     text-align: center;
+     font-family: Arial, Helvetica, sans-serif;
+     font-weight: bold;
+     background-color: #f8f8f8;
+     color: #333;
+ }
 
-table {
-    margin: auto;
-    border-collapse: collapse;
-    width: 60%;
-}
+ table {
+     margin: 20px auto;
+     border-collapse: collapse;
+     width: 75%;
+     background: #ffffff;
+     border-radius: 8px;
+ }
 
-td,
-th {
-    border: solid 1px black;
-    padding: 5px;
-}
+ td,
+ th {
+     border-bottom: 1px solid #ddd;
+     padding: 12px;
+     text-align: start;
+ }
 
-thead {
-    background-color: #cbc8c8;
-}
+ thead {
+     background: #e0e0e0;
+     color: #333;
+     font-size: 18px;
+ }
 
-.book-actions {
-    border: none;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-}
+ .book-actions {
+     border: none;
+     padding: 8px 15px;
+     font-size: 14px;
+     cursor: pointer;
+     border-radius: 5px;
+ }
 
-.read {
-    background-color: #33aaff;
-}
+ .book-actions:hover {
+     opacity: 0.85;
+ }
 
-.update {
-    background-color: #ffcc33;
-    color: black;
-}
+ .read {
+     background: #6c8daf;
+     color: white;
+ }
 
-.delete {
-    background-color: #dd6600;
-}
+ .update {
+     background: #d1a469;
+     color: white;
+ }
 
-.book-add-btn {
-    background-color: #cbc8c8;
-    border: none;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 20px;
-}
+ .delete {
+     background: #c97b7b;
+     color: white;
+ }
 
-.book-modal {
-    background-color: #cbc8c8;
-    border-radius: 20px;
-    border: none;
-    text-align: start;
-}
+ .book-add-btn {
+     background: #6c8daf;
+     color: white;
+     border: none;
+     padding: 10px 20px;
+     font-size: 16px;
+     cursor: pointer;
+     border-radius: 5px;
+     margin: 20px;
+ }
 
-.close-btn {
-    border: 2px solid lightgrey;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}
+ .book-add-btn:hover {
+     opacity: 0.85;
+ }
 
-.book-filter {
-    margin-block: 20px;
-    padding: 5px 10px;
-}
+ .book-modal {
+     position: fixed;
+     top: 20px;
+     right: 20px;
+     background: #6c8daf;
+     color: white;
+     text-align: start;
+     padding: 12px 20px;
+     border-radius: 5px;
+     font-size: 14px;
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+ }
 
-.book-filter-btn {
-    background-color: #cbc8c8;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-}
+ .close-btn {
+     border: 2px solid lightgrey;
+     position: absolute;
+     top: 5px;
+     right: 5px;
+     cursor: pointer;
+     width: 20px;
+     height: 20px;
+     border-radius: 50%;
+ }
 
-.book-success-message {
-    background-color: #cbc8c8;
-    border-radius: 20px;
-    border: none;
-}
+ .book-filter {
+     padding: 10px;
+     width: 260px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 16px;
+     background: #ffffff;
+ }
+
+ .book-filter-btn {
+     background: #d1a469;
+     color: white;
+     border: none;
+     padding: 10px;
+     cursor: pointer;
+     border-radius: 5px;
+     margin-left: 5px;
+ }
+
+ .book-filter-btn:hover {
+     opacity: 85%;
+ }
+
+ .book-success-message {
+     position: fixed;
+     top: 20px;
+     right: 20px;
+     background: #6c8daf;
+     color: white;
+     padding: 12px 20px;
+     border-radius: 5px;
+     font-size: 14px;
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+ }
+
+ .book-stat {
+     background: #ffffff;
+     padding: 15px;
+     border-radius: 8px;
+     margin: 10px auto;
+     width: 65%;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     font-size: 18px;
+     font-weight: bold;
+     text-align: start;
+ }
