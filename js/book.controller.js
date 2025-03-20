@@ -12,14 +12,14 @@ function render() {
             <td>${book.title}</td>
             <td>${book.price}</td>
             <td>
-                <button>
+                <button class="Book-actions Read">
                   Read
                 </button>
-                <button 
+                <button class="Book-actions Update"
                  onclick="onUpdateBook('${book.id}')">
                   Update
                 </button>
-                <button 
+                <button class="Book-actions Delete"
                  onclick="onRemoveBook('${book.id}')">
                   Delete
                 </button>
@@ -41,6 +41,13 @@ function onUpdateBook(bookId) {
 
     var submitPrice = +prompt('Enter New Price')
     updatePrice(bookId, submitPrice)
+    render()
+}
+
+function onAddBook() {
+    var submitName = prompt('Enter Book Name')
+    var submitPrice = +prompt('Enter Price')
+    addBook(submitName, submitPrice)
     render()
 }
 

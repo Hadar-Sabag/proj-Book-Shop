@@ -1,25 +1,7 @@
 'use strict'
 
-const gBooks = [
-    {
-        id: 'bg4J78',
-        title: 'Harry Potter',
-        price: 120,
-        imgUrl: 'lori-ipsi.jpg'
-    },
-    {
-        id: 'bg4J79',
-        title: 'Twilight',
-        price: 300,
-        imgUrl: 'lori-ipsi.jpg'
-    },
-    {
-        id: 'bg4J77',
-        title: 'Hunger Games',
-        price: 87,
-        imgUrl: 'lori-ipsi.jpg'
-    }
-]
+var gBooks
+_createBooks()
 console.log('gBooks: ', gBooks)
 
 function getBooks() {
@@ -40,5 +22,30 @@ function updatePrice(bookId, price) {
     var book = getBook(bookId)
     book.price = price
     return book
+}
+
+function addBook(name, price) {
+    var book = _createBook(name, price)
+    gBooks.push(book)
+
+}
+
+function _createBooks() {
+    if (!gBooks || !gBooks.length) {
+        gBooks = [
+            _createBook('Harry Potter', 120),
+            _createBook('Twilight', 300),
+            _createBook('Hunger Games', 87)
+        ]
+    }
+}
+
+function _createBook(title, price) {
+    return {
+        id: makeId(),
+        title,
+        price,
+        imgUrl: `<img src="img/'${title}'.jpg">`
+    }
 }
 

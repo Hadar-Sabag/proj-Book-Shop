@@ -5,6 +5,7 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 
 table {
@@ -23,7 +24,7 @@ thead {
     background-color: #cbc8c8;
 }
 
-button {
+.Book-actions {
     border: none;
     padding: 5px 10px;
     font-size: 14px;
@@ -31,15 +32,25 @@ button {
     border-radius: 5px;
 }
 
-button:nth-child(1) {
+.Read {
     background-color: #33aaff;
 }
 
-button:nth-child(2) {
+.Update {
     background-color: #ffcc33;
     color: black;
 }
 
-button:nth-child(3) {
+.Delete {
     background-color: #dd6600;
+}
+
+.Book-add-btn {
+    background-color: #cbc8c8;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px;
 }
