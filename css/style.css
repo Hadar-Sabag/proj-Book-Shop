@@ -24,7 +24,7 @@ thead {
     background-color: #cbc8c8;
 }
 
-.Book-actions {
+.book-actions {
     border: none;
     padding: 5px 10px;
     font-size: 14px;
@@ -32,20 +32,20 @@ thead {
     border-radius: 5px;
 }
 
-.Read {
+.read {
     background-color: #33aaff;
 }
 
-.Update {
+.update {
     background-color: #ffcc33;
     color: black;
 }
 
-.Delete {
+.delete {
     background-color: #dd6600;
 }
 
-.Book-add-btn {
+.book-add-btn {
     background-color: #cbc8c8;
     border: none;
     padding: 5px 10px;
@@ -53,4 +53,8 @@ thead {
     cursor: pointer;
     border-radius: 5px;
     margin: 20px;
+}
+
+.modal {
+    background-color: lightblue;
 }

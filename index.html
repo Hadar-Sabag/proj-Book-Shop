@@ -20,10 +20,19 @@
                 <td>Actions</td>
             </tr>
         </thead>
-        <tbody class="Book-list"></tbody>
+        <tbody class="book-list"></tbody>
     </table>
 
-    <button class="Book-add-btn" onclick="onAddBook()">Add Book</button>
+    <button class="book-add-btn" onclick="onAddBook()">Add Book</button>
+
+    <dialog class="modal">
+        <h3 class="title">title: <span></span></h3>
+        <h3 class="price">price: <span></span></h3>
+        <img src="img/Harry_Potter.jpg" />
+
+        <button onclick="onCloseModal()">x</button>
+    </dialog>
+
 
     <script src="js/utils.js"></script>
     <script src="js/book.controller.js"></script>

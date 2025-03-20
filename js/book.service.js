@@ -33,19 +33,23 @@ function addBook(name, price) {
 function _createBooks() {
     if (!gBooks || !gBooks.length) {
         gBooks = [
-            _createBook('Harry Potter', 120),
-            _createBook('Twilight', 300),
-            _createBook('Hunger Games', 87)
+            _createBook('Harry Potter', 120, 'img/Harry_Potter.jpg'),
+            _createBook('Twilight', 300, 'img/Twilight.jpg'),
+            _createBook('Hunger Games', 87, 'img/Hunger_Games.jpg')
         ]
     }
 }
 
-function _createBook(title, price) {
+function _createBook(title, price, img) {
     return {
         id: makeId(),
         title,
         price,
-        imgUrl: `<img src="img/'${title}'.jpg">`
+        imgUrl: img || 'img/random.jpg'
     }
+}
+
+function openBookDetails(bookId) {
+
 }
 

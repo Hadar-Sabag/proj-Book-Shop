@@ -12,14 +12,15 @@ function render() {
             <td>${book.title}</td>
             <td>${book.price}</td>
             <td>
-                <button class="Book-actions Read">
+                <button class="book-actions read"
+                 onclick="onOpenBookDetails('${book.id}')">
                   Read
                 </button>
-                <button class="Book-actions Update"
+                <button class="book-actions update"
                  onclick="onUpdateBook('${book.id}')">
                   Update
                 </button>
-                <button class="Book-actions Delete"
+                <button class="book-actions delete"
                  onclick="onRemoveBook('${book.id}')">
                   Delete
                 </button>
@@ -27,7 +28,7 @@ function render() {
         </tr>`
     })
 
-    document.querySelector('.Book-list').innerHTML =
+    document.querySelector('.book-list').innerHTML =
         strHTMLs.join('')
 }
 
@@ -49,5 +50,23 @@ function onAddBook() {
     var submitPrice = +prompt('Enter Price')
     addBook(submitName, submitPrice)
     render()
+}
+
+function onOpenBookDetails(bookId) {
+    var book = getBook(bookId)
+    var elModal = document.querySelector('.modal')
+    var elTitle = document.querySelector('.title span')
+    var elPrice = document.querySelector('.price span')
+    var elImg = document.querySelector('img')
+    elTitle.innerText = book.title
+    elPrice.innerText = book.price
+    elImg.src = book.imgUrl
+    console.log('book.imgUrl: ', book.imgUrl)
+    elModal.showModal()
+}
+function onCloseModal() {
+
+    var elModal = document.querySelector('.modal')
+    elModal.close()
 }
 
