@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.Book-Shop-container {
+    margin: auto;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+td,
+th {
+    border: solid 1px black;
+    padding: 5px;
+}
+
+th {
+    background-color: #cbc8c8;
+}
+
+button {
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:nth-child(1) {
+    background-color: #33aaff;
+    color: white;
+}
+
+button:nth-child(2) {
+    background-color: #ffcc33;
+    color: black;
+}
+
+button:nth-child(3) {
+    background-color: #dd6600;
+    color: white;
+}
