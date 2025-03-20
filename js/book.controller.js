@@ -55,17 +55,16 @@ function onAddBook() {
 function onOpenBookDetails(bookId) {
     var book = getBook(bookId)
     var elModal = document.querySelector('.modal')
-    var elTitle = document.querySelector('.title span')
-    var elPrice = document.querySelector('.price span')
-    var elImg = document.querySelector('img')
-    elTitle.innerText = book.title
-    elPrice.innerText = book.price
-    elImg.src = book.imgUrl
-    console.log('book.imgUrl: ', book.imgUrl)
     elModal.showModal()
+    var elTitle = document.querySelector('.title span')
+    elTitle.innerText = book.title
+    var elPrice = document.querySelector('.price span')
+    elPrice.innerText = book.price
+    var elImg = document.querySelector('img')
+    elImg.src = book.imgUrl
 }
-function onCloseModal() {
 
+function onCloseModal() {
     var elModal = document.querySelector('.modal')
     elModal.close()
 }
