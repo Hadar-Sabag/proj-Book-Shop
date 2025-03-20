@@ -20,13 +20,25 @@ const gBooks = [
         imgUrl: 'lori-ipsi.jpg'
     }
 ]
+console.log('gBooks: ', gBooks)
 
 function getBooks() {
-    return gBooks()
+    return gBooks
 }
 
-function removeBook(bookId) {
+function getBook(bookId) {
+    return gBooks.find(book => book.id === bookId)
+}
 
+
+function removeBook(bookId) {
     var bookIdx = gBooks.findIndex(book => book.id === bookId)
     if (bookIdx !== -1) gBooks.splice(bookIdx, 1)
 }
+
+function updatePrice(bookId, price) {
+    var book = getBook(bookId)
+    book.price = price
+    return book
+}
+
