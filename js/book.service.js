@@ -2,19 +2,19 @@
 
 const gBooks = [
     {
-        id: bg4J78,
+        id: 'bg4J78',
         title: 'Harry Potter',
         price: 120,
         imgUrl: 'lori-ipsi.jpg'
     },
     {
-        id: bg4J79,
+        id: 'bg4J79',
         title: 'Twilight',
         price: 300,
         imgUrl: 'lori-ipsi.jpg'
     },
     {
-        id: bg4J77,
+        id: 'bg4J77',
         title: 'Hunger Games',
         price: 87,
         imgUrl: 'lori-ipsi.jpg'

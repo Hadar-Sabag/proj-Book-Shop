@@ -7,7 +7,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.Book-Shop-container {
+table {
     margin: auto;
     border-collapse: collapse;
     width: 60%;
@@ -19,7 +19,7 @@ th {
     padding: 5px;
 }
 
-th {
+thead {
     background-color: #cbc8c8;
 }
 
@@ -33,7 +33,6 @@ button {
 
 button:nth-child(1) {
     background-color: #33aaff;
-    color: white;
 }
 
 button:nth-child(2) {
@@ -43,5 +42,4 @@ button:nth-child(2) {
 
 button:nth-child(3) {
     background-color: #dd6600;
-    color: white;
 }

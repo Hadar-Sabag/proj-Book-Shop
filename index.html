@@ -8,43 +8,19 @@
     <title>Book Shop</title>
 </head>
 
-<body>
+<body onload="onInit()">
 
     <h1>Book Shop</h1>
 
-    <table class="Book-Shop-container">
-        <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Actions</th>
-        </tr>
-        <tr>
-            <td>Harry Potter</td>
-            <td>120</td>
-            <td>
-                <button>Read</button>
-                <button>Update</button>
-                <button>Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Twilight</td>
-            <td>300</td>
-            <td>
-                <button>Read</button>
-                <button>Update</button>
-                <button>Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Hunger Games</td>
-            <td>87</td>
-            <td>
-                <button>Read</button>
-                <button>Update</button>
-                <button>Delete</button>
-            </td>
-        </tr>
+    <table>
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Price</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody class="Book-list"></tbody>
     </table>
 
     <script src="js/book.controller.js"></script>
