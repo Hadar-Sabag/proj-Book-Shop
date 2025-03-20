@@ -14,7 +14,10 @@ function render() {
                    <td>
                       <button>Read</button>
                       <button>Update</button>
-                      <button>Delete</button>
+                      <button 
+                        onclick="onRemoveBook('${book.id}')">
+                        Delete
+                      </button>
                    </td>
                 </tr>`
     })
@@ -22,3 +25,10 @@ function render() {
     document.querySelector('.Book-list').innerHTML =
         strHTMLs.join('')
 }
+
+function onRemoveBook(bookId) {
+
+    removeBook(bookId)
+    render()
+}
+
