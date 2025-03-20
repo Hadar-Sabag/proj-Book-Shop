@@ -6,6 +6,7 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     font-weight: bold;
+    margin: 0;
 }
 
 table {
@@ -56,5 +57,7 @@ thead {
 }
 
 .modal {
-    background-color: lightblue;
+    background-color: #cbc8c8;
+    border-radius: 20px;
+    border: none;
 }
