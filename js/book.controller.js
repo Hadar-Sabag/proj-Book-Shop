@@ -5,8 +5,9 @@ function onInit() {
 }
 
 function render() {
+    var books = getBooksForDisplay()
 
-    var strHTMLs = gBooks.map(book => {
+    var strHTMLs = books.map(book => {
         return `
         <tr>
             <td>${book.title}</td>
@@ -54,7 +55,7 @@ function onAddBook() {
 
 function onOpenBookDetails(bookId) {
     var book = getBook(bookId)
-    var elModal = document.querySelector('.modal')
+    var elModal = document.querySelector('.book-modal')
     elModal.showModal()
     var elTitle = document.querySelector('.title span')
     elTitle.innerText = book.title
@@ -65,7 +66,17 @@ function onOpenBookDetails(bookId) {
 }
 
 function onCloseModal() {
-    var elModal = document.querySelector('.modal')
+    var elModal = document.querySelector('.book-modal')
     elModal.close()
 }
 
+function onSetFilter(filterBy) {
+    var filterText = filterBy.toLowerCase()
+    setFilter(filterText)
+    render()
+}
+function onClearFilter(filterBy) {
+    filterBy = ''
+    setFilter('')
+    render()
+}

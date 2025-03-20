@@ -12,6 +12,10 @@
 
     <h1>Book Shop</h1>
 
+    <input class="book-filter" oninput="onSetFilter(this.value)" placeholder="Search books...">
+    <button class="book-filter-btn" onclick="onClearFilter(this.value)">Clear</button>
+
+
     <table>
         <thead>
             <tr>
@@ -25,7 +29,7 @@
 
     <button class="book-add-btn" onclick="onAddBook()">Add Book</button>
 
-    <dialog class="modal">
+    <dialog class="book-modal">
 
         <h3 class="title">title: <span></span></h3>
         <h3 class="price">price: <span></span></h3>

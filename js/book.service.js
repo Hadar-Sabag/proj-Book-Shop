@@ -1,6 +1,7 @@
 'use strict'
 
 var gBooks
+var gFilterBy = ''
 const STORAGE_KEY = 'booksdb'
 
 _createBooks()
@@ -63,4 +64,13 @@ function _createBook(title, price, img) {
 function _saveBooks() {
     saveToStorage(STORAGE_KEY, gBooks)
 }
+
+function setFilter(filterBy) {
+    gFilterBy = filterBy
+}
+
+function getBooksForDisplay() {
+    return gBooks.filter(book => book.title.toLowerCase().includes(gFilterBy))
+}
+
 
