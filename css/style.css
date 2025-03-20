@@ -86,3 +86,9 @@ thead {
     cursor: pointer;
     border-radius: 5px;
 }
+
+.book-success-message {
+    background-color: #cbc8c8;
+    border-radius: 20px;
+    border: none;
+}

@@ -37,6 +37,7 @@ function onRemoveBook(bookId) {
 
     removeBook(bookId)
     render()
+    onOpenSuccessMessage('Book deleted successfully!')
 }
 
 function onUpdateBook(bookId) {
@@ -44,6 +45,7 @@ function onUpdateBook(bookId) {
     var submitPrice = +prompt('Enter New Price')
     updatePrice(bookId, submitPrice)
     render()
+    onOpenSuccessMessage('Book updated successfully!')
 }
 
 function onAddBook() {
@@ -51,6 +53,7 @@ function onAddBook() {
     var submitPrice = +prompt('Enter Price')
     addBook(submitName, submitPrice)
     render()
+    onOpenSuccessMessage('Book added successfully!')
 }
 
 function onOpenBookDetails(bookId) {
@@ -75,8 +78,21 @@ function onSetFilter(filterBy) {
     setFilter(filterText)
     render()
 }
+
 function onClearFilter(filterBy) {
     filterBy = ''
     setFilter('')
     render()
 }
+
+function onOpenSuccessMessage(msg) {
+    var elMsg = document.querySelector('.book-success-message')
+    elMsg.innerText = msg
+    elMsg.showModal()
+
+    setTimeout(() => {
+        elMsg.close()
+    }, 2000)
+}
+
+
