@@ -24,7 +24,6 @@ function getRandomColor() {
     }
     return color
 }
-
 function makeId(length = 5) {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     let txt = ''
