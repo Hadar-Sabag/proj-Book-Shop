@@ -91,6 +91,11 @@ function _createBooks(count) {
             const book = _createBook(`Harry Potter ${i + 1}`, getRandomIntInclusive(50, 250), `img/Harry_Potter_${i + 1}.jpg`)
             books.push(book)
         }
+
+        for (let i = 0; i < count; i++) {
+            const book = _createBook(`Twilight ${i + 1}`, getRandomIntInclusive(50, 250), `img/Twilight_${i + 1}.jpg`)
+            books.push(book)
+        }
         saveToStorage(BOOK_KEY, books)
     }
     return books
@@ -103,5 +108,6 @@ function _createBook(title, price, imgUrl) {
         price,
         imgUrl: imgUrl || 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg',
         desc: makeLorem(100),
+        rating: getRandomIntInclusive(1, 5)
     }
 }

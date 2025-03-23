@@ -28,6 +28,7 @@ function renderBooksTable(books) {
             return `<tr>
                         <td>${book.title}</td>
                         <td>$${book.price.toFixed(2)}</td>
+                        <td>${book.rating}</td>
                         <td class="actions">
                             <button onclick="onReadBook('${book.id}')" >Read</button>
                             <button onclick="onUpdateBook('${book.id}')" >Update</button>
