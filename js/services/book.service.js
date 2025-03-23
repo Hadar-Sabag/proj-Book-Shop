@@ -10,7 +10,8 @@ _createBooks(6)
 
 function getBooks(options = {}) {
     const filterBy = options.filterBy
-    // const sortBy = options.sortBy
+    // console.log('filterBy: ', filterBy)
+    const sortBy = options.sortBy
     // console.log('sortBy:', sortBy)
     // const page = options.page
     // console.log('page:', page)
@@ -19,14 +20,16 @@ function getBooks(options = {}) {
 
     books = _filterBooks(filterBy)
 
-    // if (sortBy.vendor) {
-    //     const sortDir = sortBy.vendor
-    //     books = books.toSorted((c1, c2) => c1.vendor.localeCompare(c2.vendor) * sortDir)
-
-    // } else if (sortBy.maxSpeed) {
-    //     const sortDir = sortBy.maxSpeed
-    //     books = books.toSorted((c1, c2) => (c1.maxSpeed - c2.maxSpeed) * sortDir)
-    // }
+    if (sortBy.title) {
+        const sortDir = sortBy.title
+        books = books.toSorted((b1, b2) => b1.title.localeCompare(b2.title) * sortDir)
+    } else if (sortBy.price) {
+        const sortDir = sortBy.price
+        books = books.toSorted((b1, b2) => (b1.price - b2.price) * sortDir)
+    } else if (sortBy.rate) {
+        const sortDir = sortBy.rate
+        books = books.toSorted((b1, b2) => (b1.rate - b2.rate) * sortDir)
+    }
 
     // console.log('cars:', cars)
     // const startIdx = page.idx * page.size // 0 , 3 , 6

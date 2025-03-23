@@ -7,6 +7,7 @@ const gQueryOptions = {
 }
 
 function onInit() {
+    readQueryParams()
     renderBooks()
 }
 
@@ -105,6 +106,22 @@ function onSetFilterBy(filterBy) {
     }
     // setFilterBy(filterBy)
     renderBooks()
+    setQueryParams()
+}
+
+function onSetSortBy() {
+
+    const elSortField = document.querySelector('.sort-by select')
+    const elSortDir = document.querySelector('input[name="sort"]:checked')
+
+    const sortField = elSortField.value
+    const sortDir = elSortDir ? (elSortDir.value === 'ascending' ? 1 : -1) : 1
+
+    gQueryOptions.sortBy = { [sortField]: sortDir }
+
+    // gQueryOptions.page.idx = 0
+    renderCars()
+    setQueryParams()
 }
 
 // Create 
@@ -172,6 +189,101 @@ function showMsg(action) {
     setTimeout(() => {
         elMsg.classList.add('hide')
     }, 2000)
+}
+
+// Query Params
+
+function readQueryParams() {
+    const queryParams = new URLSearchParams(window.location.search)
+    gQueryOptions.filterBy = {
+        txt: queryParams.get('title') || '',
+        minSpeed: +queryParams.get('minSpeed') || 0
+    }
+
+    if (queryParams.get('sortBy')) {
+        const prop = queryParams.get('sortBy')
+        const dir = queryParams.get('sortDir')
+        gQueryOptions.sortBy[prop] = dir
+    }
+
+    if (queryParams.get('pageIdx')) {
+        gQueryOptions.page.idx = +queryParams.get('pageIdx')
+        gQueryOptions.page.size = +queryParams.get('pageSize')
+    }
+    renderQueryParams()
+}
+
+function renderQueryParams() {
+
+    document.querySelector('.filter-by input[type="text"]').value = gQueryOptions.filterBy.txt
+    document.querySelector('.filter-by input[type="range"]').value = gQueryOptions.filterBy.minSpeed
+
+    const sortKeys = Object.keys(gQueryOptions.sortBy)
+    const sortBy = sortKeys[0]
+    const dir = gQueryOptions.sortBy[sortKeys[0]]
+
+    document.querySelector('.sort-by select').value = sortBy || ''
+    document.querySelector('.sort-by .sort-desc').checked = (dir === '-1') ? true : false
+}
+
+// Query Params
+
+function readQueryParams() {
+    const queryParams = new URLSearchParams(window.location.search)
+    gQueryOptions.filterBy = {
+        txt: queryParams.get('title') || '',
+        rate: +queryParams.get('rate') || 0
+    }
+
+    if (queryParams.get('sortBy')) {
+        const prop = queryParams.get('sortBy')
+        const dir = queryParams.get('sortDir')
+        gQueryOptions.sortBy[prop] = dir
+    }
+
+    if (queryParams.get('pageIdx')) {
+        gQueryOptions.page.idx = +queryParams.get('pageIdx')
+        gQueryOptions.page.size = +queryParams.get('pageSize')
+    }
+    renderQueryParams()
+}
+
+function renderQueryParams() {
+
+    document.querySelector('.filter-by input[type="text"]').value = gQueryOptions.filterBy.txt
+    document.querySelector('.filter-by input[type="range"]').value = gQueryOptions.filterBy.rate
+
+    const sortKeys = Object.keys(gQueryOptions.sortBy)
+    const sortBy = sortKeys[0]
+    const dir = gQueryOptions.sortBy[sortKeys[0]]
+
+    document.querySelector('.sort-by select').value = sortBy || ''
+    document.querySelector('.sort-by .sort-desc').checked = (dir === '-1') ? true : false
+}
+
+function setQueryParams() {
+    const queryParams = new URLSearchParams()
+
+    queryParams.set('title', gQueryOptions.filterBy.txt)
+    queryParams.set('rate', gQueryOptions.filterBy.rate)
+
+    const sortKeys = Object.keys(gQueryOptions.sortBy)
+    if (sortKeys.length) {
+        queryParams.set('sortBy', sortKeys[0])
+        queryParams.set('sortDir', gQueryOptions.sortBy[sortKeys[0]])
+    }
+
+    if (gQueryOptions.page) {
+        queryParams.set('pageIdx', gQueryOptions.page.idx)
+        queryParams.set('pageSize', gQueryOptions.page.size)
+    }
+
+    const newUrl =
+        window.location.protocol + "//" +
+        window.location.host +
+        window.location.pathname + '?' + queryParams.toString()
+
+    window.history.pushState({ path: newUrl }, '', newUrl)
 }
 
 
