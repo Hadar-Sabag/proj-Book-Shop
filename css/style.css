@@ -1,145 +1,190 @@
- * {
-     box-sizing: border-box;
- }
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
 
- body {
-     text-align: center;
-     font-family: Arial, Helvetica, sans-serif;
-     font-weight: bold;
-     background-color: #f8f8f8;
-     color: #333;
- }
+body {
+    background-color: rgb(223, 233, 235);
+    padding-block-start: 20px;
 
- table {
-     margin: 20px auto;
-     border-collapse: collapse;
-     width: 75%;
-     background: #ffffff;
-     border-radius: 8px;
- }
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
 
- td,
- th {
-     border-bottom: 1px solid #ddd;
-     padding: 12px;
-     text-align: start;
- }
+h1 {
+    text-transform: uppercase;
+    font-size: 80px;
+    color: #3b83b3;
+    padding-block-end: 30px;
+}
 
- thead {
-     background: #e0e0e0;
-     color: #333;
-     font-size: 18px;
- }
+.main-container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
 
- .book-actions {
-     border: none;
-     padding: 8px 15px;
-     font-size: 14px;
-     cursor: pointer;
-     border-radius: 5px;
- }
+    width: 90%;
+    margin: auto;
+}
 
- .book-actions:hover {
-     opacity: 0.85;
- }
+.book-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
- .read {
-     background: #6c8daf;
-     color: white;
- }
+input {
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 1px solid black;
+    width: 160px;
+}
 
- .update {
-     background: #d1a469;
-     color: white;
- }
+input:focus {
+    outline: none;
+    text-align: center;
+}
 
- .delete {
-     background: #c97b7b;
-     color: white;
- }
+input::placeholder {
+    text-align: center;
+    font-weight: 600;
+}
 
- .book-add-btn {
-     background: #6c8daf;
-     color: white;
-     border: none;
-     padding: 10px 20px;
-     font-size: 16px;
-     cursor: pointer;
-     border-radius: 5px;
-     margin: 20px;
- }
+table {
+    background-color: rgb(240, 240, 240);
+    border-collapse: collapse;
+}
 
- .book-add-btn:hover {
-     opacity: 0.85;
- }
+thead {
+    background: rgb(158, 208, 255);
+}
 
- .book-modal {
-     position: fixed;
-     top: 20px;
-     right: 20px;
-     background: #6c8daf;
-     color: white;
-     text-align: start;
-     padding: 12px 20px;
-     border-radius: 5px;
-     font-size: 14px;
-     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
- }
+td {
+    border: 1px solid rgb(184, 184, 184);
+    padding: 10px;
+}
 
- .close-btn {
-     border: 2px solid lightgrey;
-     position: absolute;
-     top: 5px;
-     right: 5px;
-     cursor: pointer;
-     width: 20px;
-     height: 20px;
-     border-radius: 50%;
- }
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
- .book-filter {
-     padding: 10px;
-     width: 260px;
-     border: 1px solid #ccc;
-     border-radius: 5px;
-     font-size: 16px;
-     background: #ffffff;
- }
+.book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
 
- .book-filter-btn {
-     background: #d1a469;
-     color: white;
-     border: none;
-     padding: 10px;
-     cursor: pointer;
-     border-radius: 5px;
-     margin-left: 5px;
- }
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
 
- .book-filter-btn:hover {
-     opacity: 85%;
- }
+    width: 210px;
+    flex-grow: 1;
+}
 
- .book-success-message {
-     position: fixed;
-     top: 20px;
-     right: 20px;
-     background: #6c8daf;
-     color: white;
-     padding: 12px 20px;
-     border-radius: 5px;
-     font-size: 14px;
-     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
- }
+.book-card img {
+    width: 60%;
+    border-radius: 10px;
+}
 
- .book-stat {
-     background: #ffffff;
-     padding: 15px;
-     border-radius: 8px;
-     margin: 10px auto;
-     width: 75%;
-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-     font-size: 18px;
-     font-weight: bold;
-     text-align: start;
- }
+button {
+    border: 1px solid whitesmoke;
+    background: #65a9d7;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #28597a;
+    color: #ccc;
+}
+
+button:active {
+    background: #1b435e;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #94bfe2;
+    width: 500px;
+    border-radius: 15px;
+    border: 1px solid #00000030;
+    color: whitesmoke;
+    padding: 10px;
+
+    position: absolute;
+    top: 70px;
+    right: calc(50vw - 250px);
+}
+
+.title-price-img {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: start;
+}
+
+.book-details .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.book-details img {
+    height: 200px;
+    border-radius: 10px;
+}
+
+/* .book-details .title {
+    font-size: 25px;
+    font-weight: 500;
+} */
+
+.user-msg {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: pink;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.hide {
+    display: none;
+}
+
+footer {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    background-color: #61a7e1;
+    color: white;
+    width: 100%;
+    padding: 10px;
+
+    position: fixed;
+    bottom: 0;
+}
+
+footer span {
+    margin-inline-start: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.desc {
+    text-align: start;
+}

@@ -1,87 +1,107 @@
 'use strict'
 
-var gBooks
+const BOOK_KEY = 'bookDB'
 var gFilterBy = ''
-const STORAGE_KEY = 'booksdb'
 
-_createBooks()
+var gBooks = _createBooks(6)
+
 
 function getBooks() {
-    return gBooks
+    if (!gFilterBy) return gBooks
+
+    return gBooks.filter((book) =>
+        book.title.toLowerCase().includes(gFilterBy.toLowerCase())
+    )
 }
 
+// Get by ID
 function getBook(bookId) {
-    return gBooks.find(book => book.id === bookId)
+    return gBooks.find((book) => book.id === bookId)
 }
 
-function removeBook(bookId) {
-    var bookIdx = gBooks.findIndex(book => book.id === bookId)
-    if (bookIdx !== -1) gBooks.splice(bookIdx, 1)
-
-    _saveBooks()
-}
-
-function updatePrice(bookId, price) {
-    var book = getBook(bookId)
-    book.price = price
-
-    _saveBooks()
-    return book
-}
-
-function addBook(name, price) {
-    if (!name || !price) return
-    var book = _createBook(name, price)
+function addBook(title, price, imgUrl) {
+    const book = _createBook(title, price, imgUrl)
     gBooks.push(book)
 
     _saveBooks()
     return book
 }
 
-function _createBooks() {
-    gBooks = loadFromStorage(STORAGE_KEY)
+function updateBook(bookId, newPrice) {
+    const book = getBook(bookId)
+    book.price = newPrice
 
-    if (!gBooks || !gBooks.length) {
-        gBooks = [
-            _createBook('Harry Potter', 120, 'img/Harry_Potter.jpg'),
-            _createBook('Twilight', 300, 'img/Twilight.jpg'),
-            _createBook('Hunger Games', 87, 'img/Hunger_Games.jpg')
-        ]
-        _saveBooks()
-    }
+    _saveBooks()
+    return book
 }
 
-function _createBook(title, price, img) {
+function removeBook(bookId) {
+    const idx = gBooks.findIndex((book) => book.id === bookId)
+    if (idx !== -1) gBooks.splice(idx, 1)
+
+    _saveBooks()
+}
+
+function getBookStatistics() {
+    return gBooks.reduce((acc, book) => {
+        if (book.price < 80) acc.cheap++
+        else if (book.price > 200) acc.expensive++
+        else acc.avg++
+        return acc
+    }, { cheap: 0, avg: 0, expensive: 0 })
+}
+
+function getExpensiveBooksCount() {
+    return gBooks.filter(book => book.price >= 200).length
+}
+
+function getAverageBooksCount() {
+    return gBooks.filter(book => book.price > 80 && book.price < 200).length
+}
+
+function getCheapBooksCount() {
+    return gBooks.filter(book => book.price <= 80).length
+}
+
+function setFilterBy(filterBy) {
+    gFilterBy = filterBy
+}
+
+function getFilterBy() {
+    return gFilterBy
+}
+
+function getLayout() {
+    return loadFromStorage('layout_db') || 'table'
+}
+
+function saveLayout(layout) {
+    saveToStorage('layout_db', layout)
+}
+
+function _saveBooks() {
+    saveToStorage(BOOK_KEY, gBooks)
+}
+
+function _createBooks(count) {
+    var books = loadFromStorage(BOOK_KEY)
+    if (!books || !books.length) {
+        books = []
+        for (let i = 0; i < count; i++) {
+            const book = _createBook(`Harry Potter ${i + 1}`, getRandomIntInclusive(50, 250), `img/Harry_Potter_${i + 1}.jpg`)
+            books.push(book)
+        }
+        saveToStorage(BOOK_KEY, books)
+    }
+    return books
+}
+
+function _createBook(title, price, imgUrl) {
     return {
         id: makeId(),
         title,
         price,
-        imgUrl: img || 'img/random.jpg'
+        imgUrl: imgUrl || 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg',
+        desc: makeLorem(100),
     }
 }
-
-function _saveBooks() {
-    saveToStorage(STORAGE_KEY, gBooks)
-}
-
-function setFilter(filterBy) {
-    gFilterBy = filterBy
-}
-
-function getBooksForDisplay() {
-    return gBooks.filter(book => book.title.toLowerCase().includes(gFilterBy))
-}
-
-function getExpensiveBooksCount() {
-    return gBooks.filter(book => book.price > 200).length
-}
-
-function getAverageBooksCount() {
-    return gBooks.filter(book => book.price > 80).length
-}
-
-function getCheapBooksCount() {
-    return gBooks.filter(book => book.price < 80).length
-}
-
-

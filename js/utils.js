@@ -1,29 +1,5 @@
 'use strict'
 
-//                         RANDOM
-
-// The maximum is exclusive and the minimum is inclusive
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min)
-    const maxFloored = Math.floor(max)
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled)
-}
-
-// The maximum is inclusive and the minimum is inclusive
-function getRandomIntInclusive(min, max) {
-    const minCeiled = Math.ceil(min)
-    const maxFloored = Math.floor(max)
-    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled)
-}
-
-function getRandomColor() {
-    const letters = '0123456789ABCDEF'
-    var color = '#'
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)]
-    }
-    return color
-}
 function makeId(length = 5) {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     let txt = ''
@@ -34,40 +10,40 @@ function makeId(length = 5) {
     return txt
 }
 
-/////                      MATRIX
+function makeLorem(wordCount = 100) {
+    let str = ''
+    let isNewSentence = true
 
-function createMat() {
-    var mat = []
-    for (var i = 0; i < 8; i++) {
-        mat.push([])
-        for (var j = 0; j < 8; j++) {
-            mat[i][j] = ''
+    for (let i = 0; i <= wordCount; i++) {
+        if (isNewSentence) {
+            str += getWord(true) + ' '
+            isNewSentence = false
+        } else {
+            str += getWord(false) + ' '
+            if (!(wordCount % (i + 2))) {
+                str += '.\n'
+                isNewSentence = true
+            }
         }
     }
-    return mat
+    return str
 }
 
-function copyMat(mat) {
-    var newMat = []
-    for (var i = 0; i < mat.length; i++) {
-        newMat[i] = []
-        for (var j = 0; j < mat[0].length; j++) {
-            newMat[i][j] = mat[i][j]
-        }
+function getWord(isUpperCase) {
+    const chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    const length = Math.floor(Math.random() * (5 - 2) + 2)
+    let word = ''
+
+    for (let i = 0; i <= length; i++) {
+        word += chars[Math.floor(Math.random() * (25 - 0 + 1) + 0)]
     }
-    return newMat
+
+    if (isUpperCase) word = word.charAt(0).toUpperCase() + word.substring(1)
+    return word
 }
 
-function countNegs(cellI, cellJ, mat) {
-    var negsCount = 0
-    for (var i = cellI - 1; i <= cellI + 1; i++) {
-        if (i < 0 || i >= mat.length) continue
-        for (var j = cellJ - 1; j <= cellJ + 1; j++) {
-            if (i === cellI && j === cellJ) continue
-            if (j < 0 || j >= mat[i].length) continue
-            if (mat[i][j] === '' || mat[i][j] === '') negsCount++
-            //להתאים את התנאי לפי הצורך
-        }
-    }
-    return negsCount
+function getRandomIntInclusive(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
 }
