@@ -1,11 +1,17 @@
 'use strict'
 
+const gQueryOptions = {
+    filterBy: { txt: '', rate: 0 },
+    sortBy: {},
+    page: { idx: 0, size: 3 }
+}
+
 function onInit() {
     renderBooks()
 }
 
 function renderBooks() {
-    const books = getBooks()
+    const books = getBooks(gQueryOptions)
     const layout = getLayout()
     // BONUS : Render different layouts.
     if (layout === 'table') renderBooksTable(books)
@@ -91,9 +97,13 @@ function onSetLayout(layout) {
     renderBooks()
 }
 
-function onSetFilterBy(elInput) {
-    const filterBy = elInput.value
-    setFilterBy(filterBy)
+function onSetFilterBy(filterBy) {
+    if (filterBy.txt !== undefined) {
+        gQueryOptions.filterBy.txt = filterBy.txt
+    } else if (filterBy.rate !== undefined) {
+        gQueryOptions.filterBy.rate = filterBy.rate
+    }
+    // setFilterBy(filterBy)
     renderBooks()
 }
 
