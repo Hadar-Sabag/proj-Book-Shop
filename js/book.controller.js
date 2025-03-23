@@ -141,6 +141,7 @@ function onReadBook(bookId) {
     elModal.querySelector('img').src = book.imgUrl
     elModal.querySelector('.title span').innerText = book.title
     elModal.querySelector('.price span').innerText = '$' + book.price
+    elModal.querySelector('.rating span').innerText = book.rating
     elModal.querySelector('.desc').innerText = book.desc
 
     elModal.classList.remove('hide')
